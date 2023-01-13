@@ -1,0 +1,10 @@
+apiVersion: getambassador.io/v2
+kind: Mapping
+metadata:
+  name: {{ include "helm-chart.name" . }}
+  labels:
+    {{- include "helm-chart.labels" . | nindent 4 }}
+spec:
+  ambassador_id: {{ .Values.ambassador.ambassador_id }}
+  prefix: {{ .Values.ambassador.prefix }}
+  service: {{ include "helm-chart.name" . }}
